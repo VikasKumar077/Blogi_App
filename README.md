@@ -53,38 +53,52 @@ Blogi_App/ ├── backend/ │ ├── main.py # FastAPI entry point │ �
 
 1. **Clone the repository:**  
 
-git clone https://github.com/yourusername/Blogi_App.git
-cd Blogi_App
+        git clone https://github.com/VikasKumar077/Blogi_App.git
+
+        cd Blogi_App
 
 2. Backend Setup:
-Navigate to the backend folder:
-cd backend
+   
+  Navigate to the backend folder:
+
+        cd backend
 
 Create a virtual environment:
-python -m venv venv
-source venv/bin/activate   # On Windows: venv\Scripts\activate
+
+    python -m venv venv
+
+    source venv/bin/activate   # On Windows: venv\Scripts\activate
 
 Install dependencies:
-pip install -r requirements.txt
+
+    pip install -r requirements.txt
 
 Create your .env file:
-DATABASE_URL=postgresql://username:password@host:port/dbname
-SECRET_KEY=your_secret_key
+
+    DATABASE_URL=postgresql://username:password@host:port/dbname
+    
+    SECRET_KEY=your_secret_key
 
 Run the FastAPI server:
-uvicorn main:app --reload
+
+    uvicorn main:app --reload
 
 3. Frontend Setup:
+   
 Navigate to the frontend folder:
-cd ../frontend
+
+    cd ../frontend
 
 Install dependencies:
-npm install
+
+    npm install
 
 Run the Next.js development server:
-npm run dev
+
+    npm run dev
 
 4. Access the App:
+   
 Frontend: http://localhost:3000
 Backend (API docs): http://localhost:8000/docs
 
