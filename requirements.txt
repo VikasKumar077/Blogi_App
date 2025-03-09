@@ -5,8 +5,10 @@ colorama==0.4.6
 exceptiongroup==1.2.2
 fastapi==0.115.11
 greenlet==3.1.1
+gunicorn==23.0.0
 h11==0.14.0
 idna==3.10
+packaging==24.2
 psycopg2==2.9.10
 pydantic==2.10.6
 pydantic_core==2.27.2
