@@ -1,3 +1,5 @@
+from dotenv import load_dotenv
+import os
 
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -9,8 +11,12 @@ from crud import  get_public_posts, get_post_by_id, create_post, update_post, de
 import jwt
 from auth import router as auth_router
 
-SECRET_KEY = "3f8e1f8b9c5a4c1b2f6e8d7f6b5a4c3d8e1f9b6a7c5e4d3f2a1b0c9e8d7f6b5a"
+# Load environment variables
+load_dotenv()
 
+FRONTEND_URL = os.getenv("FRONTEND_URL")
+BACKEND_URL = os.getenv("BACKEND_URL")
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 app = FastAPI()
 
@@ -22,7 +28,7 @@ app.include_router(auth_router, prefix="/auth")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://blogi-frontend.vercel.app",  # ✅ Vercel frontend
+        FRONTEND_URL,  # ✅ Vercel frontend
         "http://localhost:3000",              # ✅ Local development
     ],
     allow_credentials=True,
