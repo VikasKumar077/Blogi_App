@@ -1,7 +1,11 @@
 from sqlmodel import create_engine, SQLModel, Session
-
+import os
 # Replace with your Neon database connection URL
-DATABASE_URL ="postgresql://neondb_owner:npg_EAZ1rV5wPvMW@ep-shiny-water-a135ra4z-pooler.ap-southeast-1.aws.neon.tech/BLOGI?sslmode=require"
+DATABASE_URL= os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL is not set in the .env file")
+
 
 engine = create_engine(DATABASE_URL)
 

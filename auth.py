@@ -2,10 +2,13 @@ from fastapi import APIRouter, HTTPException, Depends
 from sqlmodel import Session, select
 from models import User
 from database import get_session
+import os
 
 import jwt, bcrypt, datetime
 
-SECRET_KEY = "3f8e1f8b9c5a4c1b2f6e8d7f6b5a4c3d8e1f9b6a7c5e4d3f2a1b0c9e8d7f6b5a"
+
+SECRET_KEY=os.getenv("SECRET_KEY")
+ALGORITHM= os.getenv("ALGORITHM")
 router = APIRouter()
 
 
@@ -16,7 +19,7 @@ def create_token(user):
     payload = { "sub": str(user.id),                  
         "username": user.username, # Include username in token
         "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=1)}
-    return jwt.encode(payload, SECRET_KEY, algorithm="HS256")
+    return jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
 
 @router.post("/register/")
 def register(user: User, session: Session = Depends(get_session)):
